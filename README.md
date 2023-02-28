@@ -1,3 +1,5 @@
 # web
-web interface for ngingo
-http handler.test
+*** web interface for ngingo ***
+here we are developing ngigo.
+
+* main branch is locked
