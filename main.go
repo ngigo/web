@@ -17,18 +17,21 @@ func login(w http.ResponseWriter, req *http.Request) {
 
 	if path == "/login" {
 		fmt.Printf("statement is true")
-		//http.Handle("/", http.FileServer(http.Dir("./Login_v2")))
-		fmt.Fprint(w, "/login is called.")
+		fmt.Fprint(w, "you want to login? sorry but we dont know you!.")
 	} else {
 		fmt.Fprintf(w, "Wrong path")
 	}
 
 }
 
+func landingpage(w http.ResponseWriter, req *http.Request) {
+	fmt.Fprintf(w, req.RemoteAddr)
+}
+
 func main() {
 	fmt.Printf("Ngigo web starting\n")
 
 	http.HandleFunc("/login", login)
-	http.Handle("/", http.FileServer(http.Dir("./Login_v2")))
+	http.HandleFunc("/", landingpage)
 	webserver()
 }
