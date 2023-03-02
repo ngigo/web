@@ -17,9 +17,12 @@ jobs:
         name: login to docker
         uses: docker/login-action@v2
         with:
-          registry: ${{ secrets.DOCKERREGISTRY}}
-          username: ${{ secrets.REGISTRY_USERNAME }}
-          password: ${{ secrets.REGISTRY_PASSWORD }}
+          registry: registry.sinabehmanesh.com
+          username: sina
+          password: sinasinasina
+          # registry: ${{ secrets.DOCKERREGISTRY}}
+          # username: ${{ secrets.REGISTRY_USERNAME }}
+          # password: ${{ secrets.REGISTRY_PASSWORD }}
       
       -
         name: build and push image to Repository
@@ -28,4 +31,4 @@ jobs:
           context: .
           file: ./Dockerfile
           push: true
-          tags: "${{ secrets.REGISTRY_USERNAME }}/ngigo-web:latest"
+          tags: "registry.sinabehmanesh.com/ngigo-web:latest"
