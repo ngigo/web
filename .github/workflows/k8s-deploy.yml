@@ -1,0 +1,37 @@
+name: ngigo-web build and deploy to k8s
+run-name: ngigo web api deployment
+on:
+  push:
+    branches:
+      - main
+      - dev
+jobs:
+  fetch-latest-and-build-image:
+    runs-on: amsterdam
+    steps:
+      - 
+        name: checkout and fetch
+        uses: actions/checkout@v3
+      
+      - 
+        name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v1
+      
+      -
+        name: login to docker
+        uses: docker/login-action@v2
+        with:
+          registry: registry.sinabehmanesh.com
+          username: "actions"
+          password: "act123"
+          # username: ${{ secrets.REGISTRY_USERNAME }}
+          # password: ${{ secrets.REGISTRY_PASSWORD }}
+      
+      -
+        name: build and push image to Repository
+        uses: docker/build-push-action@v4
+        with:
+          context: .
+          file: ./Dockerfile
+          push: true
+          tags: "registry.sinabehmanesh.com/ngigo-web:latest"
