@@ -1,5 +1,5 @@
 name: ngigo-web build and deploy to k8s
-run-name: ${{ github.actor }}.
+run-name: ngigo web api deployment
 on:
   push:
     branches:
