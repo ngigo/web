@@ -10,6 +10,6 @@ FROM alpine:latest
 
 WORKDIR /app
 
-COPY --from=build /app/ngigo-web .
+COPY /app/ngigo-web .
 
-CMD ["/app/ngigo-web"]
+CMD ['/app/ngigo-web']
