@@ -4,6 +4,7 @@ on:
   push:
     branches:
       - main
+      - dev
 jobs:
   fetch-latest-and-build-image:
   runs-on: [self-hosted, amsterdam]
@@ -35,4 +36,4 @@ jobs:
   steps:
     -
       name: apply-manifest
-      
+      uses: actions/checkout@v2
