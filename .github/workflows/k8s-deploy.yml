@@ -21,10 +21,8 @@ jobs:
         name: login to docker
         uses: docker/login-action@v2
         with:
-          registry: registry.sinabehmanesh.com
-          username: sina
-          password: sinasinasina
-          # registry: ${{ secrets.DOCKERREGISTRY}}
+          username: "sina"
+          password: "sinasinasina"
           # username: ${{ secrets.REGISTRY_USERNAME }}
           # password: ${{ secrets.REGISTRY_PASSWORD }}
       
