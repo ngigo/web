@@ -29,11 +29,3 @@ jobs:
         file: ./Dockerfile
         push: true
         tags: ${{ secrets.DOCKERHUB_USERNAME }}/ngigo-web:latest
-
-        
-  pull-and-deploy:
-  runs-on: [self-hosted, localhost]
-  steps:
-    -
-      name: apply-manifest
-      uses: actions/checkout@v2
