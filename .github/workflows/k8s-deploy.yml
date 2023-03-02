@@ -1,5 +1,5 @@
 name: ngigo-web build and deploy to k8s
-run-name: ${{ github.actor }} is starting.
+run-name: ${{ github.actor }}.
 on:
   push:
     branches:
@@ -28,4 +28,4 @@ jobs:
           context: .
           file: ./Dockerfile
           push: true
-          tags: ${{ secrets.DOCKERHUB_USERNAME }}/ngigo-web:latest
+          tags: "${{ secrets.REGISTRY_USERNAME }}/ngigo-web:latest"
