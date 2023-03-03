@@ -52,3 +52,14 @@ jobs:
         env:
           KUBE_CONFIG: ${{ secrets.KUBE_CONFIG }}
         run: kubectl apply -f ./kubernetes
+
+  test-deployment-availability:
+    runs-on:
+      - self-hosted
+      - local
+    needs:
+      - pull-image-and-deploy-to-kubernetes-cluster
+    steps:
+      -
+        name: curl endporint
+        run: curl http://localhost:8000/login
