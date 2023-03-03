@@ -7,7 +7,9 @@ on:
       - dev
 jobs:
   fetch-latest-and-build-image:
-    runs-on: amsterdam
+    runs-on: 
+      - self-hosted
+      - amsterdam
     steps:
       - 
         name: checkout and fetch
@@ -35,3 +37,22 @@ jobs:
           file: ./Dockerfile
           push: true
           tags: "registry.sinabehmanesh.com/ngigo-web:latest"
+
+  pull-image-and-deploy-to-kubernetes-cluster:
+    runs-on:
+      - self-hosted
+      - local
+    needs: fetch-latest-and-build-image
+    steps:
+      -
+        name: fetch kubernetes manifests
+        uses: actions/checkout@v3
+
+      -
+        name: locating self
+        run: ls
+      - 
+        name: deploy to cluster
+        env:
+          KUBE_CONFIG: ${{ secrets.KUBE_CONFIG }}
+        run: kubectl get pods --all-namespaces
