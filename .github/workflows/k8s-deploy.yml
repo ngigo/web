@@ -56,7 +56,7 @@ jobs:
           strategy: basic
           private-cluster: true
           manifests: |
-            ../../kubernetes/deployment.yml
-            ../../kubernetes/service.yml
+            ./kubernetes/deployment.yml
+            ./kubernetes/service.yml
           images: |
             registry.sinabehmanesh.com/ngigo-web:latest
