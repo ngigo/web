@@ -45,6 +45,10 @@ jobs:
     needs: fetch-latest-and-build-image
     steps:
       -
+        name: fetch kubernetes manifests
+        uses: actions/checkout@v4
+
+      -
         name: locating self
         run: ls
       - 
