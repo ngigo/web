@@ -62,4 +62,4 @@ jobs:
     steps:
       -
         name: curl endporint
-        run: curl http://localhost31000/login
+        run: curl http://localhost:31000/login
