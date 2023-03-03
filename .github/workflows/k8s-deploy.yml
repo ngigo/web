@@ -42,6 +42,7 @@ jobs:
     runs-on:
       - self-hosted
       - local
+    needs: fetch-latest-and-build-image
     steps:
       - 
         name: deploy to cluster
@@ -52,7 +53,7 @@ jobs:
           strategy: basic
           private-cluster: true
           manifests: |
-            kubernetes/deployment.yml
-            kubernetes/service.yml
+            ../../kubernetes/deployment.yml
+            ../../kubernetes/service.yml
           images: |
             registry.sinabehmanesh.com/ngigo-web:latest
