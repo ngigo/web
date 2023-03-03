@@ -46,7 +46,7 @@ jobs:
     steps:
       -
         name: locating self
-        run: pwd ; ls
+        run: ls
       - 
         name: deploy to cluster
         uses: Azure/k8s-deploy@v4
