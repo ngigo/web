@@ -1,5 +1,5 @@
 name: ngigo-web build and deploy to k8s
-run-name: ngigo web api deployment
+run-name: Ngigo web api deployment
 on:
   push:
     branches:
@@ -55,4 +55,8 @@ jobs:
         name: deploy to cluster
         env:
           KUBE_CONFIG: ${{ secrets.KUBE_CONFIG }}
-        run: kubectl get pods --all-namespaces
+        run: kubectl apply -f ./kubernetes/deployment.yml
+      -
+        name: update service
+        run: kubectl apply -f ./kubernetes/service.yml
+        
