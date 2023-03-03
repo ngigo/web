@@ -7,7 +7,9 @@ on:
       - dev
 jobs:
   fetch-latest-and-build-image:
-    runs-on: amsterdam
+    runs-on: 
+      - self-hosted
+      - amsterdam
     steps:
       - 
         name: checkout and fetch
@@ -35,3 +37,22 @@ jobs:
           file: ./Dockerfile
           push: true
           tags: "registry.sinabehmanesh.com/ngigo-web:latest"
+
+  pull-image-and-deploy-to-kubernetes-cluster:
+    runs-on:
+      - self-hosted
+      - local
+    steps:
+      - 
+        name: deploy to cluster
+        uses: Azure/k8s-deploy@v4
+        with:
+          name: local-cluster
+          action: deploy
+          strategy: basic
+          private-cluster: true
+          manifests: |
+            kubernetes/deployment.yml
+            kubernetes/service.yml
+          images: |
+            registry.sinabehmanesh.com/ngigo-web:latest
