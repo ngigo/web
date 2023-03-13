@@ -6,7 +6,7 @@ on:
       - main
       - dev
 jobs:
-  fetch-latest-and-build-image:
+  build-image:
     runs-on: 
       - self-hosted
       - amsterdam
@@ -38,7 +38,7 @@ jobs:
           push: true
           tags: "registry.sinabehmanesh.com/ngigo-web:latest"
 
-  pull-image-and-deploy-to-kubernetes-cluster:
+  deploy-kubernetes:
     runs-on:
       - self-hosted
       - local
@@ -53,7 +53,7 @@ jobs:
           KUBE_CONFIG: ${{ secrets.KUBE_CONFIG }}
         run: kubectl apply -f ./kubernetes
 
-  test-deployment-availability:
+  test-deployment:
     runs-on:
       - self-hosted
       - local

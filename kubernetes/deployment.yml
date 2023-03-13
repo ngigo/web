@@ -22,7 +22,7 @@ spec:
           - containerPort: 8000
         livenessProbe:
           httpGet:
-            path: /log
+            path: /login
             port: 8000
             scheme: HTTP
           initialDelaySeconds: 10
