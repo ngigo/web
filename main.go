@@ -24,6 +24,10 @@ func login(w http.ResponseWriter, req *http.Request) {
 
 }
 
+func errors(w http.ResponseWriter, req *http.Request) {
+	http.Error(w, "you are not authorized!!", http.StatusForbidden)
+}
+
 func landingpage(w http.ResponseWriter, req *http.Request) {
 	fmt.Fprintf(w, req.RemoteAddr)
 }
@@ -32,6 +36,7 @@ func main() {
 	fmt.Printf("Ngigo web starting\n")
 
 	http.HandleFunc("/login", login)
+	http.HandleFunc("/errors", errors)
 	http.HandleFunc("/", landingpage)
 	webserver()
 }
