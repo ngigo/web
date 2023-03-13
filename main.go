@@ -24,6 +24,7 @@ func login(w http.ResponseWriter, req *http.Request) {
 
 }
 
+// this function is written to handle readiness for k8s checks.
 func errors(w http.ResponseWriter, req *http.Request) {
 	http.Error(w, "you are not authorized!!", http.StatusForbidden)
 }

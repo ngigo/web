@@ -13,7 +13,6 @@ spec:
     metadata:
       labels:
         app: ngigo-web
-        pods-job: http-api
     spec:
       containers:
       - name: ngigo-web-app
@@ -23,7 +22,7 @@ spec:
           - containerPort: 8000
         livenessProbe:
           httpGet:
-            path: /errors
+            path: /login
             port: 8000
             scheme: HTTP
           initialDelaySeconds: 10
