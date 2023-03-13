@@ -13,6 +13,7 @@ spec:
     metadata:
       labels:
         app: ngigo-web
+        pods-job: http-api
     spec:
       containers:
       - name: ngigo-web-app
