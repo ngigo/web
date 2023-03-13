@@ -42,7 +42,7 @@ jobs:
     runs-on:
       - self-hosted
       - local
-    needs: fetch-latest-and-build-image
+    needs: build-image
     steps:
       -
         name: fetch kubernetes manifests
@@ -58,7 +58,7 @@ jobs:
       - self-hosted
       - local
     needs:
-      - pull-image-and-deploy-to-kubernetes-cluster
+      - deploy-kubernetes
     steps:
       -
         name: curl endporint
