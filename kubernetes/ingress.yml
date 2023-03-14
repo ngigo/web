@@ -6,8 +6,11 @@ metadata:
   labels:
     name: ngigo-web-ingress
 spec:
-  backend:
-    service:
-      name: ngigo-web
-      port: 
-        number: 31000
+  rules:
+  - host: ngigo.com
+    http:
+      paths:
+      - path: "/"
+        backend:
+          serviceName: ngigo-web
+          servicePort: 31000
