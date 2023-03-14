@@ -1,0 +1,13 @@
+---
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: ngigo-web-ingress
+  labels:
+    name: ngigo-web-ingress
+spec:
+  backend:
+    service:
+      name: ngigo-web
+      port: 
+        number: 31000
