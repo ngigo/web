@@ -11,5 +11,7 @@ spec:
     http:
       paths:
       - backend:
-          serviceName: ngigo-web-service
-          servicePort: 31000
+          service:
+            name: ngigo-web-service
+            port:
+              number: 31000
