@@ -27,7 +27,8 @@ spec:
             scheme: HTTP
           initialDelaySeconds: 10
           periodSeconds: 5
-          timeoutSeconds: 3
+          timeoutSeconds: 1
+
         readinessProbe:
           httpGet:
             path: /

@@ -1,12 +1,12 @@
 name: ngigo-web build and deploy to k8s
-run-name: ngigo web api deployment
+run-name: Ngigo web api deployment
 on:
   push:
     branches:
       - main
       - dev
 jobs:
-  fetch-latest-and-build-image:
+  build-image:
     runs-on: 
       - self-hosted
       - amsterdam
@@ -38,21 +38,28 @@ jobs:
           push: true
           tags: "registry.sinabehmanesh.com/ngigo-web:latest"
 
-  pull-image-and-deploy-to-kubernetes-cluster:
+  deploy-kubernetes:
     runs-on:
       - self-hosted
       - local
-    needs: fetch-latest-and-build-image
+    needs: build-image
     steps:
       -
         name: fetch kubernetes manifests
         uses: actions/checkout@v3
-
-      -
-        name: locating self
-        run: ls
       - 
         name: deploy to cluster
         env:
           KUBE_CONFIG: ${{ secrets.KUBE_CONFIG }}
-        run: kubectl get pods --all-namespaces
+        run: kubectl apply -f ./kubernetes
+
+  test-deployment:
+    runs-on:
+      - self-hosted
+      - local
+    needs:
+      - deploy-kubernetes
+    steps:
+      -
+        name: curl endporint
+        run: curl http://localhost:31000/login
