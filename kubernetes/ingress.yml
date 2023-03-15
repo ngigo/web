@@ -10,7 +10,6 @@ spec:
   - host: ngigo.com
     http:
       paths:
-      - path: "/"
-        backend:
+      - backend:
           serviceName: ngigo-web
           servicePort: 31000
