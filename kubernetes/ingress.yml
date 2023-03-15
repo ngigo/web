@@ -16,4 +16,4 @@ spec:
           service:
             name: ngigo-web-service
             port:
-              number: 31000
+              number: 80
