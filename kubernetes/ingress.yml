@@ -5,10 +5,12 @@ metadata:
   name: ngigo-web-ingress
   labels:
     name: ngigo-web-ingress
+  annotations:
+    ingress.kubernetes.io/rewrite-target: /
+
 spec:
   rules:
-  - host: ngigo.com
-    http:
+  - http:
       paths:
       - path: "/"
         pathType: Prefix
@@ -16,4 +18,4 @@ spec:
           service:
             name: ngigo-web-service
             port:
-              number: 80
+              number: 8000
