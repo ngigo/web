@@ -10,7 +10,9 @@ spec:
   - host: ngigo.com
     http:
       paths:
-      - backend:
+      - path: "/"
+        pathType: Prefix
+        backend:
           service:
             name: ngigo-web-service
             port:
